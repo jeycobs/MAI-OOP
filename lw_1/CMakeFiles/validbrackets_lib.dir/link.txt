@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvalidbrackets_lib.a CMakeFiles/validbrackets_lib.dir/src/validBrackets.cpp.o
+/usr/bin/ranlib libvalidbrackets_lib.a

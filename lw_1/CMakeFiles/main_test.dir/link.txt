@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main_test.dir/test/tests01.cpp.o -o main_test  libvalidbrackets_lib.a -lgtest -lgtest_main 

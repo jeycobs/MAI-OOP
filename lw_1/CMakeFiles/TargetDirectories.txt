@@ -1,0 +1,5 @@
+/home/jycbs/Документы/study/oop/1lab/CMakeFiles/validbrackets_lib.dir
+/home/jycbs/Документы/study/oop/1lab/CMakeFiles/main.dir
+/home/jycbs/Документы/study/oop/1lab/CMakeFiles/main_test.dir
+/home/jycbs/Документы/study/oop/1lab/CMakeFiles/edit_cache.dir
+/home/jycbs/Документы/study/oop/1lab/CMakeFiles/rebuild_cache.dir
