@@ -1,0 +1,3 @@
+/home/jycbs/Документы/study/oop/2lab/CMakeFiles/oop_lab2_out.dir
+/home/jycbs/Документы/study/oop/2lab/CMakeFiles/edit_cache.dir
+/home/jycbs/Документы/study/oop/2lab/CMakeFiles/rebuild_cache.dir
