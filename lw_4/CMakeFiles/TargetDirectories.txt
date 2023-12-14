@@ -1,0 +1,7 @@
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/lab.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/figure_test.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/point2d_test.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/vector_test.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/test.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/edit_cache.dir
+/home/jycbs/Документы/study/MAI-OOP/lw_4/CMakeFiles/rebuild_cache.dir

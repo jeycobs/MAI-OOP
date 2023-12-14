@@ -1,0 +1,270 @@
+//1) Rectangle
+
+template<class T>
+Rectangle<T>::Rectangle() : a(0.0,0.0), b(0.0,0.0), c(0.0,0.0), d(0.0,0.0),
+                            sideA(0), sideB(0){}
+
+template<class T>
+Rectangle<T>::Rectangle(const Rectangle& other) {
+    _copy(other);
+}
+template<class T>
+void Rectangle<T>::printVertices(std::ostream& os) const { //вывод
+    os << "1ая вершина: " << a << std::endl;
+    os << "2ая вершина: " << b << std::endl;
+    os << "3ая вершина: " << c << std::endl;
+    os << "4ая вершина: " << d << std::endl;
+}
+template<class T>
+void Rectangle<T>::readVertices(std::istream& is) {    //чтение
+    std::cout << "Введи координаты 1 вершины: ";
+    is >> a;
+    std::cout << "Введи координа 2 вершины: ";
+    is >> b;
+    std::cout << "Введи координаты 3 вершины:  ";
+    is >> c;
+    std::cout << "Введи координаты 4 вершины: ";
+    is >> d;
+    double lA = a.distanceTo(b);
+    double lB = b.distanceTo(c);
+    double lC = c.distanceTo(d);
+    double lD = d.distanceTo(a);
+
+    if (lA != lC || lB != lD) {
+        std::cerr << "The entered coordinates do not form a rectangle." << std::endl;
+    }
+}
+
+template<class T>
+Figure& Rectangle<T>::_copy(const Figure& other) {
+    const Rectangle* otherRect = dynamic_cast<const Rectangle*>(&other);
+    if (otherRect) {
+        a = otherRect->a;
+        b = otherRect->b;
+        c = otherRect->c;
+        d = otherRect->d;
+    }
+    return *this;
+}
+
+template<class T>
+Figure& Rectangle<T>::_move(Figure& other) {
+    const Rectangle<T>* otherRect = dynamic_cast<const Rectangle<T>*>(&other);
+    if (otherRect) {
+        a = std::move(otherRect->a);
+        b = std::move(otherRect->b);
+        c = std::move(otherRect->c);
+        d = std::move(otherRect->d);
+    }
+    return *this;
+}
+
+template<class T>
+Point2d<T> Rectangle<T>::center() {
+    T centerX = (a.x() + c.x()) / 2.0;
+    T centerY = (a.y() + c.y()) / 2.0;
+    return Point2d<T>(centerX, centerY);
+}
+
+template<class T>
+bool Rectangle<T>::isSameAs(const Figure& other) const {
+    const Rectangle* otherRect = dynamic_cast<const Rectangle*>(&other);
+    if (otherRect){
+        return (a == otherRect->a && b == otherRect->b 
+             && c == otherRect->c && d == otherRect->d);
+    }
+    return false;
+}
+
+template<class T>
+double Rectangle<T>::getArea() const {
+    double lA = a.distanceTo(b);
+    double lB = b.distanceTo(c);
+    return lA * lB;
+}
+
+
+//2) trapezoid
+
+template<class T>
+Trapezoid<T>::Trapezoid() : a(0.0,0.0), b(0.0,0.0), c(0.0,0.0), d(0.0,0.0),
+                            sideA(0), sideB(0),sideC(0),sideD(0) {}
+
+template<class T>
+Trapezoid<T>::Trapezoid(const Trapezoid<T>& other) {
+    _copy(other);
+}
+
+template<class T>
+void Trapezoid<T>::printVertices(std::ostream& os) const {
+    os << "1ая вершина: " << a << std::endl;
+    os << "2ая вершина: " << b << std::endl;
+    os << "3ая вершина: " << c << std::endl;
+    os << "4ая вершина: " << d << std::endl;
+ 
+}
+
+template<class T>
+void Trapezoid<T>::readVertices(std::istream& is) {
+   std::cout << "Введи координаты 1 вершины: ";
+    is >> a;
+    std::cout << "Введи координа 2 вершины: ";
+    is >> b;
+    std::cout << "Введи координаты 3 вершины:  ";
+    is >> c;
+    std::cout << "Введи координаты 4 вершины: ";
+    is >> d; 
+    double lA = a.distanceTo(b);
+    double lB = b.distanceTo(c);
+    double lC = c.distanceTo(d);
+    double lD = d.distanceTo(a);
+
+    if (lA != lC || lB != lD) { //?
+        std::cerr << "The entered coordinates do not form a rectangle." << std::endl;
+    }
+}
+
+template<class T>
+Figure& Trapezoid<T>::_copy(const Figure& other) {
+    const Trapezoid<T>* otherRect = dynamic_cast<const Trapezoid<T>*>(&other);
+    if (otherRect) {
+        a = otherRect->a;
+        b = otherRect->b;
+        c = otherRect->c;
+        d = otherRect->d;
+    }
+    return *this;
+}
+
+template<class T>
+Figure& Trapezoid<T>::_move(Figure& other) {
+    const Trapezoid<T>* otherRect = dynamic_cast<const Trapezoid<T>*>(&other);
+    if (otherRect) {
+        a = std::move(otherRect->a);
+        b = std::move(otherRect->b);
+        c = std::move(otherRect->c);
+        d = std::move(otherRect->d);
+    }
+    return *this;
+}
+
+template<class T>
+Point2d<T> Trapezoid<T>::center() {   
+    T centerX = (a.x() + b.x() + c.x() + d.x()) / 4.0;
+    T centerY = (a.y() + b.y() + c.y() + d.y()) / 4.0;
+    return Point2d<T>(centerX, centerY);
+}
+
+template<class T>
+bool Trapezoid<T>::isSameAs(const Figure& other) const {
+    const Trapezoid<T>* otherRect = dynamic_cast<const Trapezoid<T>*>(&other);
+    if (otherRect){
+        return (a == otherRect->a && b == otherRect->b 
+             && c == otherRect->c && d == otherRect->d);
+    }
+    return false;
+}
+
+template<class T>
+double Trapezoid<T>::getArea() const { //площадь
+    double AB = a.distanceTo(b);    //верхнее основание
+    double DC = d.distanceTo(c);    //нижнее основание
+    double AD = a.distanceTo(d);    //левый бок
+    double BC = b.distanceTo(c);    //првый бок
+    //формула нахождения высоты
+    
+    //double h = std::sqrt(std::pow(AD,2) - std::pow(((std::pow((DC - AB),2)) + std::pow(AD,2)-std::pow(BC,2 )/(2*(DC-AB))),2));
+    double c2 = AD*AD;
+    double a_b2 = std::pow(DC-AB,2);
+    double a_b = DC -AB;
+    double d2 = BC * BC;
+    double h = sqrt(c2 - std::pow(((a_b2+c2-d2)/(2*a_b)),2));
+    return ((AB + DC)/2)*h;
+}
+
+//3 Rhomb
+template<class T>
+Rhomb<T>::Rhomb() : a(0,0), b(0,0), c(0,0), d(0,0),
+                            sideA(0), sideB(0) {}
+
+template<class T>
+Rhomb<T>::Rhomb(const Rhomb<T>& other) {
+    _copy(other);
+}
+
+template<class T>
+void Rhomb<T>::printVertices(std::ostream& os) const {
+    os << "1ая вершина: " << a << std::endl;
+    os << "2ая вершина: " << b << std::endl;
+    os << "3ая вершина: " << c << std::endl;
+    os << "4ая вершина: " << d << std::endl;
+}
+
+template<class T>
+void Rhomb<T>::readVertices(std::istream& is) {
+    std::cout << "Введи координаты 1 вершины: ";
+    is >> a;
+    std::cout << "Введи координа 2 вершины: ";
+    is >> b;
+    std::cout << "Введи координаты 3 вершины:  ";
+    is >> c;
+    std::cout << "Введи координаты 4 вершины: ";
+    is >> d;
+    double lA = a.distanceTo(b);
+    double lB = b.distanceTo(c);
+    double lC = c.distanceTo(d);
+    double lD = d.distanceTo(a);
+
+    if (lA != lC || lB != lD) { //?
+        std::cerr << "The entered coordinates do not form a rectangle." << std::endl;
+    }
+}
+
+template<class T>
+Figure& Rhomb<T>::_copy(const Figure& other) {
+    const Rhomb* otherRect = dynamic_cast<const Rhomb*>(&other);
+    if (otherRect) {
+        a = otherRect->a;
+        b = otherRect->b;
+        c = otherRect->c;
+        d = otherRect->d;
+    }
+    return *this;
+}
+
+template<class T>
+Figure& Rhomb<T>::_move(Figure& other) {
+    const Rhomb<T>* otherRect = dynamic_cast<const Rhomb<T>*>(&other);
+    if (otherRect) {
+        a = std::move(otherRect->a);
+        b = std::move(otherRect->b);
+        c = std::move(otherRect->c);
+        d = std::move(otherRect->d);
+    }
+    return *this;
+}
+
+template<class T>
+Point2d<T> Rhomb<T>::center() {   
+    T centerX = (a.x() + b.x()) / 2.0;
+    T centerY = (a.y() + b.y()) / 2.0;
+    return Point2d<T>(centerX, centerY);
+}
+
+template<class T>
+bool Rhomb<T>::isSameAs(const Figure& other) const {
+    const Rhomb* otherRect = dynamic_cast<const Rhomb*>(&other);
+    if (otherRect){
+        return (a == otherRect->a && b == otherRect->b 
+             && c == otherRect->c && d == otherRect->d);
+    }
+    return false;
+}
+
+template<class T>
+double Rhomb<T>::getArea() const { //площадь
+    //найдем диагонали
+    double AC = a.distanceTo(c);
+    double BD = b.distanceTo(d);
+    return 0.5 * AC * BD;     
+}
