@@ -1,17 +1,14 @@
-cmake_minimum_required(VERSION 3.10)
-project(OOP_lab2)
+cmake_minimum_required(VERSION 3.22.1)
+project(oop_2lab)
 
-set(CMAKE_CXX_STANDARD)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 17)
+enable_testing()
 
-set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
+add_subdirectory(googletest)
+include_directories(include)
 
-include_directories(${INCLUDE_DIR})
+add_executable(oop_2lab main.cpp src/Octal.cpp)
+add_executable(oop_2lab_test tests/test.cpp src/Octal.cpp)
 
-file(GLOB_RECURSE SOURCES LIST_DIRECTORIES false ${SOURCE_DIR}/*.cpp)
-
-
-add_executable(oop_lab2_out main.cpp)
-
-
+target_link_libraries(oop_2lab_test gtest_main)
+add_test(NAME BASIC COMMAND oop_2lab_test)

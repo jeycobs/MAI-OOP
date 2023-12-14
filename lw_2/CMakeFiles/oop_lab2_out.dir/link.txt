@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/oop_lab2_out.dir/main.cpp.o -o oop_lab2_out 
