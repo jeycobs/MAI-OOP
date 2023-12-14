@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/point2d_test.dir/tests/point2d_test.cpp.o -o point2d_test  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a 
