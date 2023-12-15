@@ -23,6 +23,19 @@ TEST(RectangleTest, Center) {
     ASSERT_DOUBLE_EQ(center.y(), 1.5);
 }
 
+TEST(RectangleIntTest, Center) {
+    Rectangle<int> rectangle;
+    rectangle.a = Point2d<int>(0, 0);
+    rectangle.b = Point2d<int>(4, 0);
+    rectangle.c = Point2d<int>(4, 3);
+    rectangle.d = Point2d<int>(0, 3);
+    Point2d<int> center = rectangle.center();
+    ASSERT_EQ(center.x(), 2);
+    ASSERT_EQ(center.y(), 1);
+}
+
+
+
 TEST(RectangleTest, Equality) {
     Rectangle<double> rect1;
     rect1.a.set(0.0, 0.0);
@@ -59,15 +72,16 @@ TEST(TrapezoidTest, ConstructionFromStream) {
     ASSERT_DOUBLE_EQ(center.y(), 1.5);
 }
 
-TEST(TrapezoidTest, Center){
-    Trapezoid<double> tr;
-    tr.a = Point2d<double>(5.0,6.0);    
-    tr.b = Point2d<double>(10.0,6.0);
-    tr.c = Point2d<double>(10.0,1.0);
-    tr.d = Point2d<double>(1.0,1.0);
-    Point2d<double> center = tr.center();
-    ASSERT_DOUBLE_EQ(center.x(),6.5);
-    ASSERT_DOUBLE_EQ(center.y(), 3.5);
+
+TEST(TrapezoidIntTest, Center){
+    Trapezoid<int> tr;
+    tr.a = Point2d<int>(5,6);    
+    tr.b = Point2d<int>(10,6);
+    tr.c = Point2d<int>(10,1);
+    tr.d = Point2d<int>(1,1);
+    Point2d<int> center = tr.center();
+    ASSERT_EQ(center.x(),6);
+    ASSERT_EQ(center.y(), 3);
 }
 
 
@@ -115,6 +129,20 @@ TEST(RhombTest,Center){
     ASSERT_DOUBLE_EQ(center.x(),2.5);
     ASSERT_DOUBLE_EQ(center.y(), 8);
 }
+
+TEST(RhombIntTest,Center){
+    Rhomb<int> rh;
+    rh.a = Point2d<int>(1,6);
+    rh.b = Point2d<int>(4,10);
+    rh.c = Point2d<int>(7,6);
+    rh.d = Point2d<int>(4,2);
+    Point2d<int> center = rh.center();
+    ASSERT_DOUBLE_EQ(center.x(),2);
+    ASSERT_DOUBLE_EQ(center.y(), 8);
+}
+
+
+
 
 TEST(RhombTest, Equality) {
     Rhomb<double> rh;
